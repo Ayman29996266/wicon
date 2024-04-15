@@ -39,6 +39,14 @@ elif [ $1 == '-c' ]; then
     fi
 
 
+elif [ $1 == '-ls' ]; then
+    miniserve --hide-theme-selector -F -t Ayman -D -r -g -z -o -U -u -d archlinux -q /home/ayman/Ay-serv/
+
+
+elif [ $1 == '-ps' ]; then
+    miniserve --hide-theme-selector -F -t Ayman -D -r -g -z -o -U -u -d archlinux -q /home/ayman/Ay-serv/  | ssh -R 80:localhost:8080 localhost.run
+
+
 else
     echo
     echo '---------------------------------------------------------------------------'
@@ -46,13 +54,18 @@ else
     echo 'Usage: wicon [option]'
     echo '(only one option at a time, other options will be ignored)'
     echo
+    echo
     echo 'Options:'
     echo '  -h                     print this message'
     echo '  -l                     list all available networks'
     echo '  -c <SSID> <password>   connect to a network ( enter password for the first connection only )'
-    echo '  -d                     disable current network connection or hotspot'
+    echo '  -d                     disable current network connection'
     echo '  -s                     show current connection info'
     echo '  -p                     show current network password'
+    echo
+    echo
+    echo '  -ls                    make a local server with predefined settings'
+    echo '  -ps                    make a public server with predefined settings'
     echo
     echo '---------------------------------------------------------------------------'
     echo '                    Powered with: iwd - networkmanager'
